@@ -106,10 +106,10 @@ Black Modern HD - Copyright (C) 2012 GPL-III by OpenSPA
     <color name="yellow" value="#00bab329" />
   </colors>
   <fonts>
-    <font filename="valis_lcd.ttf" name="LCD" scale="100" />
-    <font filename="Eminem.ttf" name="Replacement" scale="100" replacement="1" />
-    <font filename="tuxtxt.ttf" name="Console" scale="100" />
-    <font filename="Eminem.ttf" name="Regular" scale="100" />
+    <font filename="DejaVuSans.ttf" name="LCD" scale="100" />
+    <font filename="DejaVuSans.ttf" name="Replacement" scale="100" replacement="1" />
+    <font filename="DejaVuSans.ttf" name="Console" scale="100" />
+    <font filename="DejaVuSans.ttf" name="Regular" scale="100" />
   </fonts>
   <windowstyle type="skinned" id="0">
     <title offset="20,14" font="Regular;24" />
