@@ -879,7 +879,7 @@ Black Modern HD - Copyright (C) 2012 GPL-III by OpenSPA
     <ePixmap name="fondobanda" position="0,0" size="383,740" pixmap="FHD4-Eminem/brillo3x500-fs8.png" zPosition="-2" alphatest="blend" />
     <ePixmap name="new ePixmap" position="382,0" size="21,721" pixmap="FHD4-Eminem/lverfs8.png" zPosition="10" alphatest="blend" />
     <!-- logo -->
-    <ePixmap name="logoazboxhd" position="84,635" size="198,50" pixmap="FHD4-Eminem/menu/logo.png" alphatest="on" />
+    <ePixmap name="logoazboxhd" position="84,635" size="198,50" pixmap="FHD4-Eminem/logo.png" alphatest="on" />
     <!-- lineas -->
     <widget source="session.VideoPicture" render="Pig" position="389,95" size="891,525" zPosition="-3" backgroundColor="transparent2" transparent="0" />
     <ePixmap name="lineahorarr" position="171,69" size="1280,2" pixmap="FHD4-Eminem/window/barrafondofs8.png" alphatest="blend" zPosition="-3" />
@@ -916,7 +916,7 @@ Black Modern HD - Copyright (C) 2012 GPL-III by OpenSPA
     <ePixmap name="fondobanda" position="0,0" size="383,740" pixmap="FHD4-Eminem/brillo3x500-fs8.png" zPosition="-2" alphatest="blend" />
     <ePixmap name="new ePixmap" position="382,0" size="21,721" pixmap="FHD4-Eminem/lverfs8.png" zPosition="10" alphatest="blend" />
     <!-- logo -->
-    <ePixmap name="logoazboxhd" position="84,635" size="198,50" pixmap="FHD4-Eminem/menu/logo.png" alphatest="on" />
+    <ePixmap name="logoazboxhd" position="84,635" size="198,50" pixmap="FHD4-Eminem/logo.png" alphatest="on" />
     <!-- lineas -->
     <widget source="session.VideoPicture" render="Pig" position="389,95" size="891,525" zPosition="-3" backgroundColor="transparent2" transparent="0" />
     <ePixmap name="lineahorarr" position="171,69" size="1280,2" pixmap="FHD4-Eminem/window/barrafondofs8.png" alphatest="blend" zPosition="-3" />
@@ -953,7 +953,7 @@ Black Modern HD - Copyright (C) 2012 GPL-III by OpenSPA
     <ePixmap name="fondobanda" position="0,0" size="383,740" pixmap="FHD4-Eminem/brillo3x500-fs8.png" zPosition="-2" alphatest="blend" />
     <ePixmap name="new ePixmap" position="382,0" size="21,721" pixmap="FHD4-Eminem/lverfs8.png" zPosition="10" alphatest="blend" />
     <!-- logo -->
-    <ePixmap name="logoazboxhd" position="84,635" size="198,50" pixmap="FHD4-Eminem/menu/logo.png" alphatest="on" />
+    <ePixmap name="logoazboxhd" position="84,635" size="198,50" pixmap="FHD4-Eminem/logo.png" alphatest="on" />
     <!-- lineas -->
     <widget source="session.VideoPicture" render="Pig" position="389,95" size="891,525" zPosition="-3" backgroundColor="transparent2" transparent="0" />
     <ePixmap name="lineahorarr" position="171,69" size="1280,2" pixmap="FHD4-Eminem/window/barrafondofs8.png" alphatest="blend" zPosition="-3" />
@@ -990,7 +990,7 @@ Black Modern HD - Copyright (C) 2012 GPL-III by OpenSPA
     <ePixmap name="fondobanda" position="0,0" size="383,740" pixmap="FHD4-Eminem/brillo3x500-fs8.png" zPosition="-2" alphatest="blend" />
     <ePixmap name="new ePixmap" position="382,0" size="21,721" pixmap="FHD4-Eminem/lverfs8.png" zPosition="10" alphatest="blend" />
     <!-- logo -->
-    <ePixmap name="logoazboxhd" position="84,635" size="198,50" pixmap="FHD4-Eminem/menu/logo.png" alphatest="on" />
+    <ePixmap name="logoazboxhd" position="84,635" size="198,50" pixmap="FHD4-Eminem/logo.png" alphatest="on" />
     <!-- lineas -->
     <widget source="session.VideoPicture" render="Pig" position="389,95" size="891,525" zPosition="-3" backgroundColor="transparent2" transparent="0" />
     <ePixmap name="lineahorarr" position="171,69" size="1280,2" pixmap="FHD4-Eminem/window/barrafondofs8.png" alphatest="blend" zPosition="-3" />
@@ -1027,7 +1027,7 @@ Black Modern HD - Copyright (C) 2012 GPL-III by OpenSPA
     <ePixmap name="fondobanda" position="0,0" size="383,740" pixmap="FHD4-Eminem/brillo3x500-fs8.png" zPosition="-2" alphatest="blend" />
     <ePixmap name="new ePixmap" position="382,0" size="21,721" pixmap="FHD4-Eminem/lverfs8.png" zPosition="10" alphatest="blend" />
     <!-- logo -->
-    <ePixmap name="logoazboxhd" position="84,635" size="198,50" pixmap="FHD4-Eminem/menu/logo.png" alphatest="on" />
+    <ePixmap name="logoazboxhd" position="84,635" size="198,50" pixmap="FHD4-Eminem/logo.png" alphatest="on" />
     <!-- lineas -->
     <widget source="session.VideoPicture" render="Pig" position="389,95" size="891,525" zPosition="-3" backgroundColor="transparent2" transparent="0" />
     <ePixmap name="lineahorarr" position="171,69" size="1280,2" pixmap="FHD4-Eminem/window/barrafondofs8.png" alphatest="blend" zPosition="-3" />
@@ -1066,7 +1066,7 @@ Black Modern HD - Copyright (C) 2012 GPL-III by OpenSPA
     <ePixmap name="fondobanda" position="0,0" size="383,740" pixmap="FHD4-Eminem/brillo3x500-fs8.png" zPosition="-2" alphatest="blend" />
     <ePixmap name="new ePixmap" position="382,0" size="21,721" pixmap="FHD4-Eminem/lverfs8.png" zPosition="10" alphatest="blend" />
     <!-- logo -->
-    <ePixmap name="logoazboxhd" position="84,635" size="198,50" pixmap="FHD4-Eminem/menu/logo.png" alphatest="on" />
+    <ePixmap name="logoazboxhd" position="84,635" size="198,50" pixmap="FHD4-Eminem/logo.png" alphatest="on" />
     <!-- lineas -->
     <widget source="session.VideoPicture" render="Pig" position="389,95" size="891,525" zPosition="-3" backgroundColor="transparent2" transparent="0" />
     <ePixmap name="lineahorarr" position="171,69" size="1280,2" pixmap="FHD4-Eminem/window/barrafondofs8.png" alphatest="blend" zPosition="-3" />
@@ -1103,7 +1103,7 @@ Black Modern HD - Copyright (C) 2012 GPL-III by OpenSPA
     <ePixmap name="fondobanda" position="0,0" size="383,740" pixmap="FHD4-Eminem/brillo3x500-fs8.png" zPosition="-2" alphatest="blend" />
     <ePixmap name="new ePixmap" position="382,0" size="21,721" pixmap="FHD4-Eminem/lverfs8.png" zPosition="10" alphatest="blend" />
     <!-- logo -->
-    <ePixmap name="logoazboxhd" position="84,635" size="198,50" pixmap="FHD4-Eminem/menu/logo.png" alphatest="on" />
+    <ePixmap name="logoazboxhd" position="84,635" size="198,50" pixmap="FHD4-Eminem/logo.png" alphatest="on" />
     <!-- lineas -->
     <widget source="session.VideoPicture" render="Pig" position="389,95" size="891,525" zPosition="-3" backgroundColor="transparent2" transparent="0" />
     <ePixmap name="lineahorarr" position="171,69" size="1280,2" pixmap="FHD4-Eminem/window/barrafondofs8.png" alphatest="blend" zPosition="-3" />
@@ -1191,7 +1191,6 @@ Black Modern HD - Copyright (C) 2012 GPL-III by OpenSPA
     </widget>
   </screen>
   <screen name="ChannelSelection" position="center,center" size="1017,528" title="Channel Selection" flags="wfBorder" backgroundColor="background">
-    <!--<ePixmap name="logocab" alphatest="blend" position="8,12" size="50,50" zPosition="10" pixmap="FHD4-Eminem/images/icon_tv.png" />-->
     <widget name="list" position="3,40" size="634,480" scrollbarMode="showOnDemand" selectionPixmap="FHD4-Eminem/azu_nbutton607x35fs8.png" colorServiceDescription="grey" colorServiceDescriptionSelected="#fdfdfe" picServiceEventProgressbar="FHD4-Eminem/progcl.png" foregroundColorServiceNotAvail="#555555" serviceItemHeight="30" serviceNumberFont="Regular;19" serviceNameFont="Regular;21" serviceInfoFont="Regular;18" transparent="1" zPosition="2" itemHeight="30" />
     <!--backgroundPixmap="FHD4-Eminem/fondo607x35fs8.png"-->
     <ePixmap pixmap="FHD4-Eminem/buttons/red.png" position="5,0" size="23,25" alphatest="on" />
@@ -1327,10 +1326,10 @@ Black Modern HD - Copyright (C) 2012 GPL-III by OpenSPA
       <convert type="TemplatedMultiContent">
 {"template": [
 MultiContentEntryText(pos = (200, 10), size = (470, 30), flags = RT_HALIGN_LEFT, text = 1), 
-MultiContentEntryPixmap(pos = (30, 5), size = (60, 40), png = 2), 
+MultiContentEntryPixmap(pos = (30, 5), size = (64, 64), png = 2), 
 ],
 "fonts": [gFont("Regular", 25)],
-"itemHeight": 50
+"itemHeight": 74
 }
 </convert>
     </widget>
@@ -1466,15 +1465,18 @@ MultiContentEntryPixmap(pos = (30, 5), size = (60, 40), png = 2),
     <ePixmap name="barrascroll1" position="1140,140" zPosition="9" size="20,464" pixmap="FHD4-Eminem/scroll.png" alphatest="blend" transparent="1" />
     <ePixmap name="barrascrollf1" position="1140,604" zPosition="10" size="20,30" pixmap="FHD4-Eminem/scrollb.png" alphatest="blend" transparent="1" />
   </screen>
+  <screen name="About" position="center,center" size="772,484" title="About">
+    <widget name="AboutScrollLabel" font="Regular; 22" position="48,8" size="682,460" zPosition="0" halign="center" transparent="1" foregroundColor="foreground" backgroundColor="background" valign="top" />
+  </screen>
   <screen name="LanguageSelection" position="65,86" size="600,577" title="Language selection" backgroundColor="background">
     <widget source="languages" render="Listbox" position="61,4" size="529,547" scrollbarMode="showNever" selectionPixmap="FHD4-Eminem/azu_nboton500x50fs8.png" transparent="1">
       <convert type="TemplatedMultiContent">
 {"template": [
 MultiContentEntryText(pos = (200, 10), size = (470, 30), flags = RT_HALIGN_LEFT, text = 1), 
-MultiContentEntryPixmap(pos = (30, 5), size = (60, 40), png = 2), 
+MultiContentEntryPixmap(pos = (30, 5), size = (64, 64), png = 2), 
 ],
 "fonts": [gFont("Regular", 25)],
-"itemHeight": 50
+"itemHeight": 74
 }
 </convert>
     </widget>
@@ -1651,7 +1653,7 @@ elif hayacc:
     <widget name="key_yellow" position="390,668" size="130,26" zPosition="1" font="Regular; 15" halign="left" valign="center" backgroundColor="black" transparent="1" />
     <widget name="key_blue" position="548,668" size="130,26" zPosition="1" font="Regular; 15" halign="left" valign="center" backgroundColor="transpBlack" transparent="1" />
     <widget name="DescriptionBorder" position="0,0" size="0,0" />
-    <ePixmap name="new ePixmap" position="46,24" size="48,48" pixmap="FHD4-Eminem/images/folder_movies.png" alphatest="on" />
+    <ePixmap name="new ePixmap" position="46,24" size="48,48" pixmap="FHD4-Eminem/new/folder_movies.png" alphatest="on" />
     <widget source="Title" render="Label" position="98,22" size="588,27" transparent="1" foregroundColor="un53a9ff" font="Regular; 18" backgroundColor="black" zPosition="15" noWrap="1" />
     <widget source="Service" render="Label" position="701,571" size="166,21" font="Regular; 17" halign="center" backgroundColor="background" transparent="1" foregroundColor="rwhite" noWrap="1">
       <convert type="MovieInfo">FileSize</convert>
@@ -1667,7 +1669,7 @@ elif hayacc:
       <convert type="ClockToText">Date</convert>
     </widget>
     <ePixmap name="new ePixmap" position="1,73" size="1280,21" pixmap="FHD4-Eminem/window/barrafondofs8.png" zPosition="10" alphatest="blend" />
-    <ePixmap name="marcopicon" position="43,23" size="48,48" pixmap="FHD4-Eminem/images/folder_movies.png" zPosition="11" alphatest="blend" transparent="1" />
+    <ePixmap name="marcopicon" position="43,23" size="48,48" pixmap="FHD4-Eminem/new/folder_movies.png" zPosition="11" alphatest="blend" transparent="1" />
     <ePixmap name="lineahor" position="1,648" size="1280,21" pixmap="FHD4-Eminem/window/barrafondo2fs8.png" alphatest="blend" />
     <ePixmap name="new ePixmap" position="0,1" size="1281,77" pixmap="FHD4-Eminem/brillo4300fs8.png" zPosition="5" alphatest="blend" />
     <ePixmap name="new ePixmap" position="642,56" size="606,396" pixmap="FHD4-Eminem/new/marcotv-fs8.png" alphatest="blend" zPosition="-1" />
@@ -3034,7 +3036,7 @@ MultiContentEntryText(pos = (273, -2), size = (80, 22),  font = 1, flags = RT_HA
   <screen name="MRUAPlayer_Menu" position="0,0" size="1281,730" title="Options" backgroundColor="fondogr" flags="wfNoBorder">
     <ePixmap name="new ePixmap" position="0,4" size="407,725" pixmap="FHD4-Eminem/brillo3x500-fs8.png" zPosition="-2" alphatest="on" />
     <ePixmap name="new ePixmap" position="404,4" size="21,720" pixmap="FHD4-Eminem/lverfs8.png" zPosition="10" alphatest="blend" />
-    <ePixmap name="logocab" alphatest="blend" position="39,28" size="61,61" zPosition="10" pixmap="FHD4-Eminem/images/folder_movies.png" />
+    <ePixmap name="logocab" alphatest="blend" position="39,28" size="61,61" zPosition="10" pixmap="FHD4-Eminem/new/folder_movies.png" />
     <widget name="pathlabel" transparent="1" zPosition="2" position="95,36" size="264,32" font="Regular; 22" foregroundColor="un53a9ff" />
     <widget name="list" zPosition="5" transparent="1" selectionPixmap="FHD4-Eminem/azu_nbutton607x35fs8.png" position="40,109" size="364,510" scrollbarMode="showOnDemand" itemHeight="30" foregroundColor="foreground" />
     <!-- lineas -->
@@ -3160,7 +3162,7 @@ if self.type == self.TYPE_YESNO:
     <eLabel text="Menu" position="93,41" size="247,22" font="Regular; 18" backgroundColor="background" transparent="1" foregroundColor="un53a9ff" />
     <ePixmap name="new ePixmap" position="0,4" size="400,725" pixmap="FHD4-Eminem/brillo3x500-fs8.png" zPosition="-2" alphatest="on" />
     <ePixmap name="new ePixmap" position="399,4" size="21,720" pixmap="FHD4-Eminem/lverfs8.png" zPosition="10" alphatest="blend" />
-    <ePixmap name="logocab" alphatest="blend" position="39,28" size="61,61" zPosition="10" pixmap="FHD4-Eminem/images/folder_movies.png" />
+    <ePixmap name="logocab" alphatest="blend" position="39,28" size="61,61" zPosition="10" pixmap="FHD4-Eminem/new/folder_movies.png" />
     <widget name="menu" zPosition="5" transparent="1" selectionPixmap="FHD4-Eminem/azu_nbutton607x35fs8.png" position="40,109" size="359,560" scrollbarMode="showOnDemand" itemHeight="30" foregroundColor="foreground" />
     <!-- lineas -->
     <widget source="session.VideoPicture" render="Pig" position="406,99" size="875,519" zPosition="-3" backgroundColor="transparent2" transparent="0" />

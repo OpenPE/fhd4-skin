@@ -1,4 +1,4 @@
-from Components.config import config
+from Components.config import config, ConfigYesNo
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from enigma import eServiceCenter, eServiceReference, iServiceInformation
@@ -10,6 +10,8 @@ from os import environ
 import gettext
 from Components.Language import language
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_LANGUAGE
+import threading
+import re
 
 lang = language.getLanguage()
 environ['LANGUAGE'] = lang[:2]
@@ -23,15 +25,11 @@ def _(txt):
         t = gettext.gettext(txt)
     return t
 
-from Components.config import ConfigYesNo
-
 config.misc.spazeinfobartp = ConfigYesNo(default=True)
 config.misc.spazeinfobarecm = ConfigYesNo(default=True)
 config.misc.spazeinfobarnum = ConfigYesNo(default=True)
 config.misc.spazeinfobarinet = ConfigYesNo(default=True)
 config.misc.spazeinfobarrec = ConfigYesNo(default=True)
-
-import threading
 
 class segundoplano(threading.Thread):
 
@@ -97,8 +95,6 @@ def devStr(cadena, inicio = ':', fin = None):
         return ''
 
     return
-
-import re
 
 def _commafy(s):
     r = []
@@ -293,7 +289,7 @@ class nBmExtendedServiceInfo(Poll, Converter, object):
                     pass
 
                 try:
-                    system('ping -q -c 1 -s 6 -w 2 www.google.es >/tmp/testinet.txt &')
+                    system('ping -q -c 1 -s 6 -w 2 www.google.com >/tmp/testinet.txt &')
                 except:
                     pass
 
@@ -356,7 +352,7 @@ class nBmExtendedServiceInfo(Poll, Converter, object):
                 text = ''
                 if hayecm():
                     try:
-                        f = open('/tmp/cam.info', 'r')
+                        f = open('/tmp/.cam.info', 'r')
                         text = text + f.read().replace('\n', '')
                         f.close()
                     except:

@@ -10,6 +10,7 @@ from os import environ
 import gettext
 from Components.Language import language
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_LANGUAGE, fileExists
+from string import upper
 
 lang = language.getLanguage()
 environ['LANGUAGE'] = lang[:2]
@@ -508,8 +509,6 @@ def devinfowheather(extendido):
      t11,
      t12)
 
-from string import upper
-
 def devsem(dia):
     ret = dia
     if config.plugins.spzWeatherPlugin.Entries[0].language.value == 'es':
@@ -577,7 +576,7 @@ def hayinet():
 
     if not ret:
         try:
-            os.system('ping -q -c 1 -s 6 -w 2 www.google.es >/tmp/testinet.txt &')
+            os.system('ping -q -c 1 -s 6 -w 2 www.google.com >/tmp/testinet.txt &')
         except:
             pass
 
