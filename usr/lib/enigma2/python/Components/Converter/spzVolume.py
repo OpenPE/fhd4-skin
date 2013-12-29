@@ -3,7 +3,7 @@ from Components.Element import cached
 from Poll import Poll
 from enigma import eDVBVolumecontrol
 
-class PEVolume(Poll, Converter, object):
+class spzVolume(Poll, Converter, object):
     VOLUMEN = 0
 
     def __init__(self, type):

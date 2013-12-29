@@ -10,6 +10,7 @@ from os import environ
 import gettext
 from Components.Language import language
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_LANGUAGE
+
 lang = language.getLanguage()
 environ['LANGUAGE'] = lang[:2]
 gettext.bindtextdomain('enigma2', resolveFilename(SCOPE_LANGUAGE))
@@ -22,13 +23,14 @@ def _(txt):
         t = gettext.gettext(txt)
     return t
 
-
 from Components.config import ConfigYesNo
-config.misc.peinfobartp = ConfigYesNo(default=True)
-config.misc.peinfobarecm = ConfigYesNo(default=True)
-config.misc.peinfobarnum = ConfigYesNo(default=True)
-config.misc.peinfobarinet = ConfigYesNo(default=True)
-config.misc.peinfobarrec = ConfigYesNo(default=True)
+
+config.misc.spazeinfobartp = ConfigYesNo(default=True)
+config.misc.spazeinfobarecm = ConfigYesNo(default=True)
+config.misc.spazeinfobarnum = ConfigYesNo(default=True)
+config.misc.spazeinfobarinet = ConfigYesNo(default=True)
+config.misc.spazeinfobarrec = ConfigYesNo(default=True)
+
 import threading
 
 class segundoplano(threading.Thread):
@@ -41,46 +43,41 @@ class segundoplano(threading.Thread):
     def run(self):
         self.parametro.subcargasat(self.six)
 
-
 def haytp():
     ret = True
     try:
-        ret = config.misc.peinfobartp.value
+        ret = config.misc.spazeinfobartp.value
     except:
         pass
 
     return ret
-
 
 def hayecm():
     ret = True
     try:
-        ret = config.misc.peinfobarecm.value
+        ret = config.misc.spazeinfobarecm.value
     except:
         pass
 
     return ret
-
 
 def haynum():
     ret = True
     try:
-        ret = config.misc.peinfobarnum.value
+        ret = config.misc.spazeinfobarnum.value
     except:
         pass
 
     return ret
-
 
 def hayinet():
     ret = True
     try:
-        ret = config.misc.peinfobarinet.value
+        ret = config.misc.spazeinfobarinet.value
     except:
         pass
 
     return ret
-
 
 def devStr(cadena, inicio = ':', fin = None):
     try:
@@ -99,6 +96,7 @@ def devStr(cadena, inicio = ':', fin = None):
     except:
         return ''
 
+    return
 
 import re
 
@@ -111,32 +109,33 @@ def _commafy(s):
 
     return ''.join(r)
 
-
 def FormatWithCommas(value, sepmil = '.', sepdec = ',', ndecimales = 0, cmoneda = ''):
     re_digits_nondigits = re.compile('\\d+|\\D+')
     format = '%.' + str(ndecimales) + 'f' + cmoneda
     if value == None:
         return ''
-    if str(value) == '':
+    elif str(value) == '':
         return ''
-    cvalue = str(value)
-    try:
-        fvalue = float(value)
-    except:
-        return value
+    else:
+        cvalue = str(value)
+        try:
+            fvalue = float(value)
+        except:
+            return value
 
-    try:
-        parts = re_digits_nondigits.findall(format % (fvalue,))
-        for i in xrange(len(parts)):
-            s = parts[i]
-            if s.isdigit():
-                parts[i] = _commafy(s)
-                break
+        try:
+            parts = re_digits_nondigits.findall(format % (fvalue,))
+            for i in xrange(len(parts)):
+                s = parts[i]
+                if s.isdigit():
+                    parts[i] = _commafy(s)
+                    break
 
-        return ''.join(parts).replace('.', sepdec).replace('#', sepmil)
-    except:
-        return value
+            return ''.join(parts).replace('.', sepdec).replace('#', sepmil)
+        except:
+            return value
 
+        return
 
 def getFEData(frontendDataOrg):
     from Tools.Transponder import ConvertToHumanReadable
@@ -148,11 +147,13 @@ def getFEData(frontendDataOrg):
             if frontendDataOrg['tuner_type'] == 'DVB-C':
                 return str(frontendData['frequency']) + ' ' + str(frontendData['symbol_rate'])
             if frontendDataOrg['tuner_type'] == 'DVB-T':
-                return str(FormatWithCommas(int(frontendData['frequency']) / 1000)) + ' Khz (UHF ' + str(devchfr(frontendData['frequency'])) + ') ' + str(frontendData['bandwidth'])
+                return str(FormatWithCommas(ajustafr(int(frontendData['frequency'])))) + ' Khz (UHF ' + str(devchfr(frontendData['frequency'])) + ') ' + str(frontendData['bandwidth'])
         return ' '
     except:
         return ' '
 
+def ajustafr(frecu):
+    return int(round(float(frecu) / 1000000, 0)) * 1000
 
 def devchfr(frecu):
     ret = 'NA'
@@ -205,13 +206,13 @@ def devchfr(frecu):
      (67, 842),
      (68, 850),
      (69, 858)]
+    nfrecu = ajustafr(frecu) / 1000
     for ele in arrfecs:
-        if ele[1] == int(frecu / 1000000):
+        if ele[1] == nfrecu:
             ret = ele[0]
-            break
+            return ret
 
     return ret
-
 
 class nBmExtendedServiceInfo(Poll, Converter, object):
     SERVICENAME = 0
@@ -269,17 +270,18 @@ class nBmExtendedServiceInfo(Poll, Converter, object):
             self.type = 8
         else:
             self.type = self.ALL
+        return
 
     @cached
     def getBoolean(self):
         ret = False
         service = self.source.service
-        if service:
-            info = service.info()
-            if not info:
-                return False
-            if self.type == self.INETCONECTION:
-                ret = hayinet() or False
+        info = service and service.info()
+        if not info:
+            return False
+        if self.type == self.INETCONECTION:
+            if not hayinet():
+                ret = False
             else:
                 try:
                     f = open('/tmp/testinet.txt', 'r')
@@ -291,7 +293,7 @@ class nBmExtendedServiceInfo(Poll, Converter, object):
                     pass
 
                 try:
-                    system('ping -q -c 1 -s 6 -w 2 www.google.com >/tmp/testinet.txt &')
+                    system('ping -q -c 1 -s 6 -w 2 www.google.es >/tmp/testinet.txt &')
                 except:
                     pass
 
@@ -303,27 +305,29 @@ class nBmExtendedServiceInfo(Poll, Converter, object):
 
             if not adapters:
                 ret = False
+            else:
                 puerta = '0.0.0.0'
                 for x in adapters:
                     if iNetwork.getAdapterAttribute(x[1], 'up') is True:
                         puerta = str(iNetwork.getAdapterAttribute(x[1], 'gateway')).replace(',', '.').replace('[', '').replace(' ', '').replace(']', '')
                         break
 
-                ret = puerta == '0.0.0.0' and False
-            else:
-                try:
-                    f = open('/tmp/testnet.txt', 'r')
-                    texto = f.read().replace('\n', '')
-                    f.close()
-                    if '1 packets transmitted, 1 packets received' in texto:
-                        ret = True
-                except:
-                    pass
+                if puerta == '0.0.0.0':
+                    ret = False
+                else:
+                    try:
+                        f = open('/tmp/testnet.txt', 'r')
+                        texto = f.read().replace('\n', '')
+                        f.close()
+                        if '1 packets transmitted, 1 packets received' in texto:
+                            ret = True
+                    except:
+                        pass
 
-                try:
-                    system('ping -q -c 1 -s 6 -w 2 ' + puerta + ' >/tmp/testnet.txt &')
-                except:
-                    pass
+                    try:
+                        system('ping -q -c 1 -s 6 -w 2 ' + puerta + ' >/tmp/testnet.txt &')
+                    except:
+                        pass
 
         return ret
 
@@ -337,139 +341,140 @@ class nBmExtendedServiceInfo(Poll, Converter, object):
             elif haynum():
                 self.cargasat(self.type, False)
         service = self.source.service
-        if service:
-            info = service.info()
-            if not info:
-                return ''
+        info = service and service.info()
+        if not info:
+            return ''
+        else:
             text = ''
             orbital = ''
             number = ''
             satName = ''
             name = info.getName().replace('\xc2\x86', '').replace('\xc2\x87', '')
-            text = self.type == self.SERVICENAME and name
-        elif self.type == self.CAMNAME:
-            text = ''
-            if hayecm():
-                try:
-                    f = open('/tmp/cam.info', 'r')
-                    text = text + f.read().replace('\n', '')
-                    f.close()
-                except:
-                    pass
-
-                try:
-                    f = open('/tmp/script.info', 'r')
-                    text = text + f.read().replace('\n', '')
-                    f.close()
-                    if text == 'no':
-                        text = _('No CAM')
-                except:
-                    pass
-
-                if text == '':
-                    text == _('No CAM')
-        elif self.type == self.SERVICENUMBER:
-            if haynum():
-                number = self.getServiceNumber(name, info.getInfoString(iServiceInformation.sServiceref))
-                text = number
-        elif self.type == self.ORBITALPOSITION:
-            if haytp():
-                orbital = self.getOrbitalPosition(info)
-                text = orbital
-        elif self.type == self.SATNAME:
-            if haytp():
-                orbital = self.getOrbitalPosition(info)
-                satName = self.satNames.get(orbital, orbital)
-                text = satName
-        elif self.type == self.PROVIDER:
-            text = info.getInfoString(iServiceInformation.sProvider)
-        elif self.type == self.FROMCONFIG:
-            if haytp():
-                orbital = self.getOrbitalPosition(info)
-                satName = self.satNames.get(orbital, orbital)
-                number = self.getServiceNumber(name, info.getInfoString(iServiceInformation.sServiceref))
-                if config.plugins.ExtendedServiceInfo.showServiceNumber.value == True and number != '':
-                    text = '%s. %s' % (number, name)
-                else:
-                    text = name
-                if config.plugins.ExtendedServiceInfo.showOrbitalPosition.value == True and orbital != '':
-                    if config.plugins.ExtendedServiceInfo.orbitalPositionType.value == 'name':
-                        text = '%s (%s)' % (text, satName)
-                    else:
-                        text = '%s (%s)' % (text, orbital)
-        elif self.type == 7:
-            text = ''
-            if hayecm():
-                ecmInfoString = ' '
-                using = ''
-                address = ''
-                hops = ''
-                ecmTime = ''
-                sistema = ''
-                try:
-                    f = open('/tmp/ecm.info', 'r')
-                    content = f.read()
-                    f.close()
-                except:
-                    content = ''
-
-                contentInfo = content.split('\n')
-                for line in contentInfo:
-                    if line.startswith('system:'):
-                        esisd = devStr(line)
-                        if esisd.replace('\n', '').strip() == 'FTA':
-                            ecmInfoString = _('FTA channel')
-                            break
-                    elif line.startswith('caid:'):
-                        caid = devStr(line)
-                        if caid.__contains__('x'):
-                            idx = caid.index('x')
-                            caid = caid[idx + 1:]
-                            if len(caid) == 3:
-                                caid = '0%s' % caid
-                            caid = caid[:2]
-                            caid = caid.upper()
-                            sistema = caid
-                            if self.systemCaids.has_key(caid):
-                                sistema = self.systemCaids.get(caid)
-                    elif line.startswith('address:'):
-                        address2 = line.replace('address:', '')
-                        address = devStr(address2, None, ':')
-                        porto = devStr(address2)
-                        if porto == address or porto == '':
-                            porto = ''
-                        else:
-                            porto = ':' + porto
-                        if len(address) > 23:
-                            address = address[:20] + '...'
-                        address = address + porto
-                    elif line.startswith('hops:'):
-                        hops = ' (' + devStr(line) + ' ' + _('hops') + ')'
-                    elif line.startswith('ecm time:'):
-                        ecmTime = devStr(line)
-                        if len(ecmTime) > 4:
-                            ecmTime = ecmTime[0:4]
-                        ecmTime = ecmTime + ' ' + _('secs.')
-
-                if sistema != '':
-                    ecmInfoString = '%s' % sistema
-                if using != '':
-                    ecmInfoString = '%s :: %s' % (ecmInfoString, using)
-                if address != '':
-                    ecmInfoString = '%s :: %s' % (ecmInfoString, address)
-                if ecmTime != '':
-                    ecmInfoString = '%s :: %s' % (ecmInfoString, ecmTime + hops)
-                text = ecmInfoString
-        elif haytp():
-            number = self.getServiceNumber(name, info.getInfoString(iServiceInformation.sServiceref))
-            orbital = self.getOrbitalPosition(info)
-            if number == '':
+            if self.type == self.SERVICENAME:
                 text = name
-            else:
-                text = '%s. %s' % (number, name)
-            if orbital != '':
-                text = '%s (%s)' % (text, orbital)
-        return str(text)
+            elif self.type == self.CAMNAME:
+                text = ''
+                if hayecm():
+                    try:
+                        f = open('/tmp/cam.info', 'r')
+                        text = text + f.read().replace('\n', '')
+                        f.close()
+                    except:
+                        pass
+
+                    try:
+                        f = open('/etc/.ActiveCamd', 'r')
+                        text = text + f.read().replace('\n', '')
+                        f.close()
+                        if text == 'no':
+                            text = _('No CAM')
+                    except:
+                        pass
+
+                    if text == '':
+                        text == _('No CAM')
+            elif self.type == self.SERVICENUMBER:
+                if haynum():
+                    number = self.getServiceNumber(name, info.getInfoString(iServiceInformation.sServiceref))
+                    text = number
+            elif self.type == self.ORBITALPOSITION:
+                if haytp():
+                    orbital = self.getOrbitalPosition(info)
+                    text = orbital
+            elif self.type == self.SATNAME:
+                if haytp():
+                    orbital = self.getOrbitalPosition(info)
+                    satName = self.satNames.get(orbital, orbital)
+                    text = satName
+            elif self.type == self.PROVIDER:
+                text = info.getInfoString(iServiceInformation.sProvider)
+            elif self.type == self.FROMCONFIG:
+                if haytp():
+                    orbital = self.getOrbitalPosition(info)
+                    satName = self.satNames.get(orbital, orbital)
+                    number = self.getServiceNumber(name, info.getInfoString(iServiceInformation.sServiceref))
+                    if config.plugins.ExtendedServiceInfo.showServiceNumber.value == True and number != '':
+                        text = '%s. %s' % (number, name)
+                    else:
+                        text = name
+                    if config.plugins.ExtendedServiceInfo.showOrbitalPosition.value == True and orbital != '':
+                        if config.plugins.ExtendedServiceInfo.orbitalPositionType.value == 'name':
+                            text = '%s (%s)' % (text, satName)
+                        else:
+                            text = '%s (%s)' % (text, orbital)
+            elif self.type == 7:
+                text = ''
+                if hayecm():
+                    ecmInfoString = ' '
+                    using = ''
+                    address = ''
+                    hops = ''
+                    ecmTime = ''
+                    sistema = ''
+                    try:
+                        f = open('/tmp/ecm.info', 'r')
+                        content = f.read()
+                        f.close()
+                    except:
+                        content = ''
+
+                    contentInfo = content.split('\n')
+                    for line in contentInfo:
+                        if line.startswith('system:'):
+                            esisd = devStr(line)
+                            if esisd.replace('\n', '').strip() == 'FTA':
+                                ecmInfoString = _('FTA channel')
+                                break
+                        elif line.startswith('caid:'):
+                            caid = devStr(line)
+                            if caid.__contains__('x'):
+                                idx = caid.index('x')
+                                caid = caid[idx + 1:]
+                                if len(caid) == 3:
+                                    caid = '0%s' % caid
+                                caid = caid[:2]
+                                caid = caid.upper()
+                                sistema = caid
+                                if self.systemCaids.has_key(caid):
+                                    sistema = self.systemCaids.get(caid)
+                        elif line.startswith('address:'):
+                            address2 = line.replace('address:', '')
+                            address = devStr(address2, None, ':')
+                            porto = devStr(address2)
+                            if porto == address or porto == '':
+                                porto = ''
+                            else:
+                                porto = ':' + porto
+                            if len(address) > 23:
+                                address = address[:20] + '...'
+                            address = address + porto
+                        elif line.startswith('hops:'):
+                            hops = ' (' + devStr(line) + ' ' + _('hops') + ')'
+                        elif line.startswith('ecm time:'):
+                            ecmTime = devStr(line)
+                            if len(ecmTime) > 4:
+                                ecmTime = ecmTime[0:4]
+                            ecmTime = ecmTime + ' ' + _('secs.')
+
+                    if sistema != '':
+                        ecmInfoString = '%s' % sistema
+                    if using != '':
+                        ecmInfoString = '%s :: %s' % (ecmInfoString, using)
+                    if address != '':
+                        ecmInfoString = '%s :: %s' % (ecmInfoString, address)
+                    if ecmTime != '':
+                        ecmInfoString = '%s :: %s' % (ecmInfoString, ecmTime + hops)
+                    text = ecmInfoString
+            elif haytp():
+                number = self.getServiceNumber(name, info.getInfoString(iServiceInformation.sServiceref))
+                orbital = self.getOrbitalPosition(info)
+                if number == '':
+                    text = name
+                else:
+                    text = '%s. %s' % (number, name)
+                if orbital != '':
+                    text = '%s (%s)' % (text, orbital)
+            return str(text)
 
     text = property(getText)
 
@@ -539,21 +544,25 @@ class nBmExtendedServiceInfo(Poll, Converter, object):
         except:
             return '---x---'
 
+        return
+
     def cargasat(self, tipo, sixml = True):
         if tipo < 1 or tipo > 6:
             return
-        if tipo == 1:
-            sixml = False
-        if not self.seg_plano == None:
-            return
-        try:
-            self.seg_plano._Thread__stop()
-        except:
-            pass
+        else:
+            if tipo == 1:
+                sixml = False
+            if not self.seg_plano == None:
+                return
+            try:
+                self.seg_plano._Thread__stop()
+            except:
+                pass
 
-        self.seg_plano = None
-        self.seg_plano = segundoplano(self, sixml)
-        self.seg_plano.start()
+            self.seg_plano = None
+            self.seg_plano = segundoplano(self, sixml)
+            self.seg_plano.start()
+            return
 
     def subcargasat(self, sixml = True):
         if sixml:
@@ -561,16 +570,16 @@ class nBmExtendedServiceInfo(Poll, Converter, object):
                 satXml = parse('/etc/tuxbox/satellites.xml').getroot()
                 if satXml is not None:
                     for sat in satXml.findall('sat'):
-                        if not sat.get('name'):
-                            name = None
-                            if not sat.get('position'):
-                                position = None
-                                if name is not None and position is not None:
-                                    position = '%s.%s' % (position[:-1], position[-1:])
-                                    position = position.startswith('-') and '%sW' % position[1:]
-                                else:
-                                    position = '%sE' % position
-                                position = position.startswith('.') and '0%s' % position
+                        name = sat.get('name') or None
+                        position = sat.get('position') or None
+                        if name is not None and position is not None:
+                            position = '%s.%s' % (position[:-1], position[-1:])
+                            if position.startswith('-'):
+                                position = '%sW' % position[1:]
+                            else:
+                                position = '%sE' % position
+                            if position.startswith('.'):
+                                position = '0%s' % position
                             self.satNames[position] = name
 
             except:
@@ -583,6 +592,7 @@ class nBmExtendedServiceInfo(Poll, Converter, object):
             pass
 
         self.seg_plano = None
+        return
 
     def changed(self, what):
         if what[0] != self.CHANGED_SPECIFIC or what[1] == self.type:
