@@ -1,10 +1,10 @@
-FHD4 Skin By Naser (Eminem) - Based On Black Modern HD By OpenSPA
+FHD4 skin by Naser (Eminem) - Based on Black Modern HD by OpenSPA
 =========
 
-Persian Professionals Official Website :
+Persian Professionals official website :
 
 https://pe4k.com
 
-OpenSPA Official Website :
+OpenSPA official website :
 
 http://openspa.info
